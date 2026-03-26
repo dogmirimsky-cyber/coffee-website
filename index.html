@@ -7,60 +7,49 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <div class="container">
+    <div class="container">
+        <header>
             <h1>The Daily Grind</h1>
             <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="products.html">Our Coffee</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
+                <a href="#">Home</a>
+                <a href="#">Our Coffee</a>
+                <a href="#">Contact</a>
             </nav>
-        </div>
-    </header>
+        </header>
 
-    <section class="hero">
-        <div class="container">
+        <section class="hero">
             <h2>Your Perfect Cup, Delivered.</h2>
             <p>Experience the finest coffee beans from around the world.</p>
-            <a href="products.html" class="btn">Shop Now</a>
-        </div>
-    </section>
+            <button>Shop Now</button>
+        </section>
 
-    <section class="featured-products">
-        <div class="container">
-            <h2>Featured Blends</h2>
-            <div class="product-grid">
-                <div class="product-item">
-                    <img src="images/ethiopia.jpg" alt="Ethiopian Yirgacheffe">
-                    <h3>Ethiopian Yirgacheffe</h3>
-                    <p>Bright, floral, citrus notes.</p>
-                    <span class="price">$18.00</span>
-                    <button class="add-to-cart-btn" data-product-id="ethiopia">Add to Cart</button>
-                </div>
-                <div class="product-item">
-                    <img src="images/colombia.jpg" alt="Colombian Supremo">
-                    <h3>Colombian Supremo</h3>
-                    <p>Rich, chocolatey, nutty.</p>
-                    <span class="price">$16.00</span>
-                    <button class="add-to-cart-btn" data-product-id="colombia">Add to Cart</button>
-                </div>
-                <div class="product-item">
-                    <img src="images/brazil.jpg" alt="Brazilian Santos">
-                    <h3>Brazilian Santos</h3>
-                    <p>Smooth, low acidity, caramel.</p>
-                    <span class="price">$15.00</span>
-                    <button class="add-to-cart-btn" data-product-id="brazil">Add to Cart</button>
-                </div>
+        <section class="products">
+            <div class="product">
+                <img src="images/ethiopian-yirgacheffe.jpg" alt="Ethiopian Yirgacheffe">
+                <h2>Ethiopian Yirgacheffe</h2>
+                <p>Bright, floral, citrus notes.</p>
+                <p class="price">$18.00</p>
+                <button onclick="buyProduct('Ethiopian Yirgacheffe', '$18.00')">Add to Cart</button>
             </div>
-        </div>
-    </section>
+            <div class="product">
+                <img src="images/colombian-supremo.jpg" alt="Colombian Supremo">
+                <h2>Colombian Supremo</h2>
+                <p>Rich, chocolatey, nutty.</p>
+                <p class="price">$16.00</p>
+                <button onclick="buyProduct('Colombian Supremo', '$16.00')">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="images/brazilian-santos.jpg" alt="Brazilian Santos">
+                <h2>Brazilian Santos</h2>
+                <p>Smooth, low acidity, caramel.</p>
+                <p class="price">$15.00</p>
+                <button onclick="buyProduct('Brazilian Santos', '$15.00')">Add to Cart</button>
+            </div>
+        </section>
+    </div>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2023 The Daily Grind. All rights reserved.</p>
-        </div>
+        <p>© 2023 The Daily Grind. All rights reserved.</p>
     </footer>
 
     <script src="script.js"></script>
