@@ -1,26 +1,34 @@
-const CHAT_ID = '8001144306';
-const BOT_TOKEN = '8332315107:AAHq_a443j_z0_j3_u1_o3_p4_r7_t9_w1_x0'; // Replace with your actual bot token
+// Replace YOUR_BOT_TOKEN_HERE with your actual Telegram Bot token.
+const BOT_TOKEN = 'YOUR_BOT_TOKEN_HERE';
+const CHAT_USERNAME = '@Brosky_Order'; // Telegram username to receive the message.
 
-function buyProduct(productName, productPrice) {
-    const message = `New order: ${productName} - ${productPrice}`;
-    sendMessageToTelegram(message);
-}
+document.getElementById('orderForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const coffee = document.getElementById('coffee').value;
+    const quantity = document.getElementById('quantity').value;
 
-async function sendMessageToTelegram(message) {
+    const message = `🛒 New coffee order!\n\nName: ${name}\nCoffee: ${coffee}\nQuantity: ${quantity}`;
+
     const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-    const params = {
-        chat_id: CHAT_ID,
+    const params = new URLSearchParams({
+        chat_id: CHAT_USERNAME,
         text: message,
-    };
+        parse_mode: 'HTML'
+    });
 
     try {
-        const response = await fetch(`${url}?${new URLSearchParams(params)}`);
-        if (!response.ok) {
-            console.error('Telegram API error:', response.status, response.statusText);
+        const response = await fetch(`${url}?${params.toString()}`);
+        const data = await response.json();
+        if (data.ok) {
+            document.getElementById('status').textContent = '✅ Order sent! Thank you.';
+            this.reset();
         } else {
-            console.log('Message sent to Telegram successfully!');
+            document.getElementById('status').textContent = '❌ Failed to send order. Please try again.';
+            console.error('Telegram API error:', data);
         }
-    } catch (error) {
-        console.error('Error sending message to Telegram:', error);
+    } catch (err) {
+        document.getElementById('status').textContent = '❌ Error sending order.';
+        console.error(err);
     }
-}
+});
